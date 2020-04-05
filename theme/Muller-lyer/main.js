@@ -113,7 +113,6 @@ var trial = {
     trial.stimuli[5].x1 = canvas_width*3/4.0+comp_len/2.0,    
     trial.stimuli[5].x2 = canvas_width*3/4.0+comp_len/2.0-comp_arrow_len*Math.cos(rad);
     trial.stimuli[5].y2 = comp_posY-comp_arrow_len*Math.sin(rad);
-    console.log(trial); 
   },
 
   // 反応に対する処理
@@ -163,8 +162,6 @@ var trial = {
 	jsPsych.addNodeToEndOfTimeline(
 	  finish_experiment_procedure,
 	  jsPsych.resumeExperiment)
-	
-	console.log("finish");
       } else {
 	idx_of_current_factor = 0;
 	jsPsych.pauseExperiment();      
@@ -239,8 +236,6 @@ jsPsych.init({
   timeline: [start_experiment_procedure],
   on_finish: function(){
     document.getElementById("result").style.display = "block";
-
-    ["rt", "response_type", "key_press", "avg_frame_time", "trial_type", "trial_index", "time_elapsed", "internal_node_id", "record", "comp_angle", "up_down", "comp_len", "response"]
 
     var dt = jsPsych.data.get().filter([{record: 1}]);
     dt = dt.ignore(["response_type", "key_press", "avg_frame_time", "trial_type", "trial_index", "time_elapsed", "internal_node_id", "record"]);
