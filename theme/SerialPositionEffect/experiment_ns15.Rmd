@@ -26,7 +26,7 @@ tagList(
 <script>
   var stimulus_duration = 3000;
   var interval_duration = 1000;
-  var words = ["ルケ", "ニロ", "コハ", "エレ", "ヌテ", "アタ", "モセ", "クナ", "サウ", "ヤハ"]; 
+  var words = ["ワモ", "ロニ", "ヒハ", "ケネ", "ツソ", "ヘク", "サヌ", "イメ", "リテ", "ムヨ", "モヘ", "ユフ", "カヒ", "ラミ", "エホ"];
 </script>
 <script src="main.js"></script>
 <textarea id="result" value="1" cols="30" rows="30" maxlength="15" style="display:none"></textarea>

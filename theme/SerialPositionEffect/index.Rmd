@@ -9,7 +9,9 @@ output:
     theme: null
 ---
 
-[>>>実験を実施する](experiment.html)
+[>>>実験を実施する（無意味つづり 10アイテム)](experiment.html)
+
+[>>>実験を実施する（無意味つづり 15アイテム)](experiment_ns15.html)
 
 [>>>ショートバージョン（動作確認用）を実施する](experiment_s.html)
 
