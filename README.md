@@ -7,6 +7,7 @@
 
 - [ミュラーリヤー錯視](theme/Muller-lyer/index.html)
 - [視覚探索](theme/VisualSearch/index.html)
+- [系列位置効果](theme/SerialPositionEffect/index.html)
 
 ## 開発者向け
 

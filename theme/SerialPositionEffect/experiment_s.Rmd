@@ -1,0 +1,33 @@
+---
+title: "系列位置効果"
+author: '@kohske'
+date: "2020/4/5"
+output:
+  html_document:
+    mathjax: null
+    highlight: null
+    theme: null
+    css: ../lib/jspsych-6.1.0/css/jspsych.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+```{r}
+library(htmltools)
+tagList(
+  tags$script(src='../lib/jspsych-6.1.0/jspsych.js'),
+  tags$script(src='../lib/jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js'),
+  tags$script(src='../lib/jspsych-psychophysics-0.3/jspsych-psychophysics.js')
+)
+```
+
+<script>
+  var stimulus_duration = 100;
+  var interval_duration = 100;
+</script>
+<script src="main.js"></script>
+<textarea id="result" value="1" cols="30" rows="30" maxlength="15" style="display:none"></textarea>
+
+
