@@ -1,5 +1,8 @@
 # キソジオンライン
 
+デプロイ版はgh-pagesで。 https://kohske.github.io/KisojiOnline/
+
+
 ## テーマリスト
 
 - [ミュラーリヤー錯視](theme/Muller-lyer/index.html)
