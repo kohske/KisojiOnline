@@ -9,6 +9,8 @@
 - [視覚探索](theme/VisualSearch/index.html)
 - [系列位置効果](theme/SerialPositionEffect/index.html)
 
+- おまけ：[さださがし](http://kohske.github.io/sandbox/sadasagashi/)
+
 ## 開発者向け
 
 - 暫定的に[Wiki](https://github.com/kohske/KisojiOnline/wiki/%E3%82%AD%E3%82%BD%E3%82%B8%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3-Wiki)を拠点にしてます。
