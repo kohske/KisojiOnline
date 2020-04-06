@@ -1,0 +1,41 @@
+---
+title: "顔の倒立効果"
+author: '@kohske'
+date: "2020/4/5"
+output:
+  html_document:
+    mathjax: null
+    highlight: null
+    theme: null
+    css: ../lib/jspsych-6.1.0/css/jspsych.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+```{r}
+library(htmltools)
+tagList(
+  tags$script(src='../lib/jspsych-6.1.0/jspsych.js'),
+  tags$script(src='../lib/jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js'),
+  tags$script(src='../lib/jspsych-6.1.0/plugins/jspsych-html-button-response.js'),
+  tags$script(src='../lib/jspsych-psychophysics-0.3/jspsych-psychophysics.js')
+)
+```
+
+<script>
+var upfaces = ["p_image00097.jpg", "p_image00098.jpg", "p_image00099.jpg", "p_image00100.jpg", "p_image00101.jpg", "p_image00102.jpg", "p_image00103.jpg", "p_image00104.jpg"];
+var invfaces = ["i_p_image00105.jpg", "i_p_image00106.jpg", "i_p_image00107.jpg", "i_p_image00108.jpg", "i_p_image00109.jpg", "i_p_image00110.jpg", "i_p_image00111.jpg", "i_p_image00112.jpg"];
+
+</script>
+
+```{r}
+tagList(
+  tags$script(src='main.js')
+)
+```
+
+<textarea id="result" value="1" cols="30" rows="30" maxlength="15" style="display:none"></textarea>
+
+
