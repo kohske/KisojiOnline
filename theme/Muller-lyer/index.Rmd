@@ -17,11 +17,18 @@ editor_options:
 
 ## 背景
 
-後でかく
+- 錯視とは・・・
+  - 知覚と物理的な性質の乖離。
+  - さまざまな幾何学錯視がある。
+- ミューラリヤー錯視の紹介
+  - 先の両端の矢羽によって長さが変わる。
+  - 内向きの場合は短く、外向きの場合は長く見える。
+- 実験の目的
+  - ミュラーリヤー錯視における矢羽の角度の効果を追試。
 
 ## 方法
 
-- 標準刺激（横棒）と比較刺激（矢羽付き横棒）の長さを比較して、比較刺激が標準刺激に比べて長いか短いかを判断する、という実験です。
+- 標準刺激（矢羽付き横棒）と比較刺激（横棒）の長さを比較して、比較刺激が標準刺激に比べて長いか短いかを判断する、という実験です。
 - 標準刺激は左側、比較刺激は右側に出でてきます。
 
 ### 手続き
@@ -57,7 +64,7 @@ datatable(read_excel("sampleData.xlsx"))
 - rt: 反応時間。この実験では無視してOK
 - sequence_index: 系列のインデクス（0-indexed）
 - response_index: 系列内の反応のインデクスです（0-indexed)
-- camp_angle: 比較刺激の矢場の角度。
+- std_angle: 比較刺激の矢場の角度。
 - up_down: 上昇系列 or 下降系列
 - comp_len: 比較刺激の長さ。
 - response: 反応。
@@ -85,19 +92,20 @@ PSE = c()
 for (si in unique(dt$sequence_index)) {
   tmp = subset(dt, sequence_index == si)
   pse = mean(tail(tmp, 2)$comp_len) # 最後の2行のcomp_lenの平均
-  PSE = rbind(PSE, data.frame(comp_angle = tmp$comp_angle[1], pse = pse))
+  PSE = rbind(PSE, data.frame(std_angle = tmp$std_angle[1], pse = pse))
 }
 
 knitr::kable(PSE) # データの構造を確認しましょう
 
 # 各条件ごとの平均値を計算します。
-result = aggregate(pse ~ comp_angle, data = PSE, FUN = mean)
+result = aggregate(pse ~ std_angle, data = PSE, FUN = mean)
 knitr::kable(result) 
 
 # 図示
 library(ggplot2)
-ggplot(result, aes(comp_angle, pse)) + 
-  geom_point() + geom_line() +
+ggplot(result, aes(std_angle, pse)) + 
+  geom_hline(yintercept = 150, colour = "gray", linetype = "dashed")+
+  geom_point() + geom_line() + 
   theme_classic()
 ```
 
