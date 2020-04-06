@@ -7,6 +7,8 @@ output:
     highlight: kate
     mathjax: null
     theme: null
+editor_options: 
+  chunk_output_type: console
 ---
 
 [>>>練習する（角度2条件の上昇・下降系列1回ずつ、計4回です）](experiment_p.html)
@@ -37,7 +39,71 @@ output:
   - 上昇系列：比較刺激は最初は短く、だんだん長くなります。「長い」反応が出現したら系列終了です。
   - 下降系列：比較刺激は最初は長く、だんだん短くなります。「短い」反応が出現したら系列終了です。
 
-## 分析方法
+## 分析
+
+### サンプルデータ
+
+- [sampleData.xlsx](sampleData.xlsx) を置いておきます。
+- 内容は以下のとおりです。
+
+```{r, echo=FALSE}
+library(DT)
+library(readxl)
+datatable(read_excel("sampleData.xlsx"))
+```
+
+### データ定義
+
+- rt: 反応時間。この実験では無視してOK
+- sequence_index: 系列のインデクス（0-indexed）
+- response_index: 系列内の反応のインデクスです（0-indexed)
+- camp_angle: 比較刺激の矢場の角度。
+- up_down: 上昇系列 or 下降系列
+- comp_len: 比較刺激の長さ。
+- response: 反応。
+
+### 分析方法
+
+- 見てわかるとおり、上昇系列では"long"、下降系列では"short"の反応が出たら系列終了です。
+- 各系列のPSEは、各系列の最後の長さと、最後から2番目の長さの平均を取ればいいです。
+- 各系列のPSEを算出したあとに、条件ごとのPSEの平均を計算します。
+  - これが、各被験者の代表値なので、これを提出してもらうのが良さそうです。
+- この計算を行うRのコードを載せておきます。
+  - 結果をエクセルに貼り付けて、`sampleData.xlsx`というファイル名（これは任意）で保存してあるとします。
+
+```{r}
+library(readxl) # エクセルファイルの読み込みに使う。
+dt = read_excel("sampleData.xlsx") # 読み込む
+head(dt) # データの構造を確認しましょう。
+str(dt) # データの構造を確認しましょう。
+summary(dt) # データの要約に変なところがないか確認しましょう。
+
+# 各系列のPSEを抽出します。
+
+# ホントは1行で書けますが、あえてtidyverseは使わずbase functionで行きます。
+PSE = c()
+for (si in unique(dt$sequence_index)) {
+  tmp = subset(dt, sequence_index == si)
+  pse = mean(tail(tmp, 2)$comp_len) # 最後の2行のcomp_lenの平均
+  PSE = rbind(PSE, data.frame(comp_angle = tmp$comp_angle[1], pse = pse))
+}
+
+knitr::kable(PSE) # データの構造を確認しましょう
+
+# 各条件ごとの平均値を計算します。
+result = aggregate(pse ~ comp_angle, data = PSE, FUN = mean)
+knitr::kable(result) 
+
+# 図示
+library(ggplot2)
+ggplot(result, aes(comp_angle, pse)) + 
+  geom_point() + geom_line() +
+  theme_classic()
+```
+
+以上が、各被験者の集計です。
+
+- 実際の授業では、`result`の中身（条件ごとのPSEの平均）を提出してもらって、複数の人のデータを使ってHADで1要因Repeated Measures ANOVAで解析するのが一般的だと思います。
 
 ## 考察のポイント
 
