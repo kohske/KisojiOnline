@@ -16,13 +16,12 @@ var comp_len;
 var comp_angle;
 var ud; // 上昇 or 下降
 
-// 要因計画
-var fac = {
-  angles: [60, 120, 180, 240, 300], // 角度
-  //angles: [60, 300],  
-  up_down: ["up", "down"], // 系列
-  rept: [1,2],
-};
+// 要因計画は親HTMLで。
+//var fac = {
+//  angles: [60, 120, 180, 240, 300], // 角度
+//  up_down: ["up", "down"], // 系列
+//  rept: [1,2],
+//};
 
 var factors = jsPsych.randomization.factorial(fac, 1, true);
 

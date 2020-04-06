@@ -9,7 +9,9 @@ output:
     theme: null
 ---
 
-[>>>実験を実施する](experiment.html)
+[>>>練習する（角度2条件の上昇・下降系列1回ずつ、計4回です）](experiment_p.html)
+
+[>>>実験を実施する（角度5条件 x 上昇・下降 x 2回反復で20回です）](experiment.html)
 
 ## 背景
 

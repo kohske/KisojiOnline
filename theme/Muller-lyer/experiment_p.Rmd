@@ -25,9 +25,9 @@ tagList(
 
 <script>
 var fac = {
-  angles: [60, 120, 180, 240, 300], // 角度
+  angles: [60, 300], // 角度
   up_down: ["up", "down"], // 系列
-  rept: [1,2],
+  rept: [1],
 };
 </script>
 

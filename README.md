@@ -9,7 +9,6 @@
 - [視覚探索](theme/VisualSearch/index.html)
 - [系列位置効果](theme/SerialPositionEffect/index.html)
 - [顔の倒立効果](theme/FaceInversion/index.html)
-
 - おまけ：[さださがし](http://kohske.github.io/sandbox/sadasagashi/)
 
 ## 開発者向け
