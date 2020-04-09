@@ -1,7 +1,6 @@
 ---
 title: "視覚探索実験"
 author: '@kohske'
-date: "2020/4/5"
 output:
   html_document:
     mathjax: null
@@ -20,11 +19,24 @@ tagList(
   tags$script(src='../lib/jspsych-6.1.0/jspsych.js'),
   tags$script(src='../lib/jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js'),
   tags$script(src='../lib/jspsych-psychophysics-0.3/jspsych-psychophysics.js'),
-  
-  tags$script(src="main.js")
-)
+  )
 ```
 
-<textarea id="result" value="1" cols="30" rows="30" maxlength="15" style="display:none"></textarea>
+<script>
+// 2条件ランダム、練習
+var factors = {
+ setsize: [8, 16, 32], // セットサイズ
+ target: [0, 1], // 1: ターゲットあり, 0: ターゲットなし
+ conjunction: [0, 1],  // 1: 結合探索、 0: 特徴探索
+};
+
+var exp_name = 特徴・結合探索ランダム　練習";
+var n_repeat = 1; // 繰り返しの回数
+
+</script>
+
+```{r}
+  tags$script(src='main.js')
+```
 
 

@@ -9,7 +9,17 @@ output:
     theme: null
 ---
 
-[>>>実験を実施する](experiment.html)
+## 実験リスト
+
+- 特徴探索条件
+  - [>>> 特徴探索条件・練習（6試行）](experiment_f_p.html)
+  - [>>> 特徴探索条件・本番（120試行）](experiment_f_r.html)
+- 結合探索条件
+  - [>>> 結合探索条件・練習（6試行）](experiment_c_p.html)
+  - [>>> 結合探索条件・本番（120試行）](experiment_c_r.html)
+- 特徴探索・結合探索をランダムに実施
+  - [>>> 特徴結合ランダム・練習（12試行）](experiment_r_p.html)
+  - [>>> 特徴結合ランダム・本番（240試行）](experiment_r_r.html)
 
 ## 背景
 

@@ -10,18 +10,24 @@ var stim_ny = 6; // 行数
 var stim_area_w = canvas_width / stim_nx; // 各グリッドの幅
 var stim_area_h = canvas_height / stim_ny; // 各グリッドの高さ
 
-var line_width = 2; // 現在無効（調べる（）
-var line_length = 24;
+var line_width = 2; // 現在無効（調べる）
+var line_length = 24; // 線の長さ
 
-// 要因計画
-var factors = {
-  setsize: [8, 16, 32], // セットサイズ
-  target: [0, 1], // 1: ターゲットあり, 0: ターゲットなし
-  conjunction: [0, 1],  // 1: 結合探索、 0: 特徴探索
-};
+// 休憩を挟む間隔
+var rest_for  = 60;
+
+// 変数
+var trial_counter = 0; // 休憩用
+
+// 要因計画 HTMLで定義
+// var factors = {
+//   setsize: [8, 16, 32], // セットサイズ
+//   target: [0, 1], // 1: ターゲットあり, 0: ターゲットなし
+//   conjunction: [0, 1],  // 1: 結合探索、 0: 特徴探索
+// };
 
 // デザイン (最後の数字は各条件の反復数。本番は30くらいに。)
-var full_design = jsPsych.randomization.factorial(factors, 2);
+var full_design = jsPsych.randomization.factorial(factors, n_repeat);
 
 // シャローコピーなので、かなり変な回避をしてる。
 var lines;
@@ -49,11 +55,11 @@ var search_trial = {
   background_color: '#000000',
   setsize: jsPsych.timelineVariable("setsize"),
   target: jsPsych.timelineVariable("target"),
-  conj: jsPsych.timelineVariable("conjunction"),
+  condition: jsPsych.timelineVariable("conjunction"),
   data: { // 記録用（上と重複）
     setsize: jsPsych.timelineVariable("setsize"),
     target: jsPsych.timelineVariable("target"),
-    conj: jsPsych.timelineVariable("conjunction"),
+    condition: jsPsych.timelineVariable("conjunction"),
   },
 
   // 試行の刺激を設定する
@@ -73,7 +79,7 @@ var search_trial = {
 
       // 刺激のタイプ・・・1: 赤の右上がり、2: 緑の右下がり、3: 緑の右上がり
       // 特徴探索ならデストラクタは全部、緑の右下がり
-      stim_type = (trial.conj == 1)? jsPsych.randomization.sampleWithoutReplacement([1, 2, 3], 1) : 2;
+      stim_type = (trial.condition == 1)? jsPsych.randomization.sampleWithoutReplacement([1, 2, 3], 1) : 2;
 
       // ターゲット（あるなら）は赤の右下がり
       if (i==0 && trial.target == 1) {
@@ -102,6 +108,8 @@ var search_trial = {
 
   // 反応に対する処理
   on_finish: function(data) {
+    data.rt = Math.round(data.rt * 10) / 10;
+    ++trial_counter;
     data.record = 1;
     // 左矢印 (「ない」反応)
     if (data.key_press == 37) {
@@ -128,7 +136,7 @@ var blank = {
 // 開始時の画面
 var start_experiment_procedure = {
   type: 'html-keyboard-response',
-  stimulus: '<p>視覚探索実験</p>',
+  stimulus: exp_name,
   choices: ['space'],
   prompt: "<p>画面上に斜めの線がたくさん出てきます。<br/>"+
     "<br/>"+
@@ -142,20 +150,49 @@ var start_experiment_procedure = {
     "</p>",
 };
 
+// 休憩
+var rest_procedure = {
+  type: 'html-keyboard-response',
+  stimulus: 'exp_name',
+  choices: ['space'],
+  prompt: `<p>休憩してください。</p>
+<p>再開するには、スペースキーを押してください。</p>`,
+}
+
+// 休憩用分岐
+var rest_if_node = {
+  timeline: [rest_procedure],
+  conditional_function: function(){
+    if (((trial_counter)%rest_for)==0 && (trial_counter < full_design.length)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
 // 手続き
 var search_procedure = {
-  timeline: [blank, search_trial],
+  timeline: [blank, search_trial, rest_if_node],
   timeline_variables: full_design,
 };
 
-jsPsych.init({
-  timeline: [start_experiment_procedure, search_procedure],
-  on_finish: function(){
-    document.getElementById("result").style.display = "block";
-    
+// 実験終了時の画面
+var finish_experiment_procedure = {
+  type: 'html-keyboard-response',
+  stimulus: "",
+  choices: jsPsych.NO_KEYS,  
+  on_start: function(trial) {
     var dt = jsPsych.data.get().filter([{record: 1}]);
     dt = dt.ignore(["response_type", "key_press", "avg_frame_time", "trial_type", "trial_index", "time_elapsed", "internal_node_id", "record"]);
-    var txt = dt.csv().replace(/,/g, "\t").replace(/"/g,"")
-    document.getElementById("result").value=txt;
+    var txt = dt.csv().replace(/,/g, "\t").replace(/"/g,"");
+    trial.stimulus = '<p>実験終了です。</p><p>下の枠の中のデータをエクセルなどに貼り付けて保存しましょう。</p>'+
+      '<p>枠の中をクリックしてから、Ctrl+A (コントロールキーを押しながらAキーを押す)ですべて選択し、Ctrl+Cでクリップボードにコピーできます。</p>'+
+      '<p>コピーしたら、新しいエクセルファイルを開き、Ctrl+Vで貼付けましょう。</p>'+
+      '<textarea style="width:450px; height: 300px">'+txt+'</textarea>';
   }
+};
+
+jsPsych.init({
+  timeline: [start_experiment_procedure, search_procedure, blank, finish_experiment_procedure],
 });
