@@ -14,14 +14,16 @@
 
 テーマ一覧と関連するキーワードです。
 
-- [ミュラーリヤー錯視](theme/Muller-lyer/index.html)
+- [ミュラーリヤー錯視](theme/Muller-lyer/)
   - 錯視; 閾値測定; 極限法
-- [視覚探索](theme/VisualSearch/index.html)
+- [視覚探索](theme/VisualSearch/)
   - ポップアウト; 注意; 結合探索; 特徴探索; 特徴統合理論; 反応時間
-- [系列位置効果](theme/SerialPositionEffect/index.html)
+- [系列位置効果](theme/SerialPositionEffect/)
   - 短期記憶; 再認; 正答率
-- [顔の倒立効果](theme/FaceInversion/index.html)
+- [顔の倒立効果](theme/FaceInversion/)
   - 記憶の処理水準; 倒立効果; 短期記憶; 顔認知
+- 未 [短期記憶](theme/ShortTermMemory/)
+  - 短期記憶;
 - 未 [鏡映描写]() 
   - 運動学習; 転移; 遂行時間
 - 未 [ストループ課題]()
