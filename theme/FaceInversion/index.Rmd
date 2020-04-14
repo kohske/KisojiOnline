@@ -9,11 +9,21 @@ output:
     theme: null
 ---
 
-- 刺激に用いた顔画像は[This Person Does Not Exist](https://www.thispersondoesnotexist.com/)により生成したものです。
+刺激に用いた顔画像は[This Person Does Not Exist](https://www.thispersondoesnotexist.com/)により生成したものです。
 
-[>>>練習を実施する（形状・意味 4試行ずつ)](experiment_p.html)
+---
 
-[>>>実験を実施する（形状・意味 24試行ずつ)](experiment.html)
+- 形状課題・意味課題の両方を実施
+  - [>>> 練習（[学習4試行→再認4試行] x 2セット)](experiment_p.html)
+  - [>>> 本番（[学習24試行→再認24試行] x 2セット)](experiment.html)
+
+- 形状課題を実施
+  - [>>> 練習（学習4試行→再認4試行)](experiment_p_s.html)
+  - [>>> 本番（学習24試行→再認24試行)](experiment_s.html)
+
+- 意味課題を実施
+  - [>>> 練習（学習4試行→再認4試行)](experiment_p_m.html)
+  - [>>> 本番（学習24試行→再認24試行)](experiment_m.html)
 
 ## 背景
 
@@ -33,10 +43,10 @@ output:
 
 ### 手続き
 
-2要因の被験者内計画です。
+2要因の被験者内計画です。形状と意味を別の群で実施するなら2要因混合計画。
 
 - 顔の向き
-- 処理水準（ブロック）
+- 処理水準（ブロック。場合によっては被験者間）
 
 ### 測定法 
 

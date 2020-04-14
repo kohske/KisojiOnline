@@ -24,7 +24,7 @@ tagList(
 ```
 
 <script>
-var exp_type = "b";
+var exp_type = "m";
 
 var upfaces_images = ["p_image00097.jpg", "p_image00098.jpg", "p_image00099.jpg", "p_image00100.jpg", "p_image00101.jpg", "p_image00102.jpg", "p_image00103.jpg", "p_image00104.jpg"];
 
@@ -36,4 +36,3 @@ tagList(
   tags$script(src='main.js')
 )
 ```
-

@@ -24,7 +24,7 @@ tagList(
 ```
 
 <script>
-var exp_type = "b";
+var exp_type = "m";
 
 var upfaces_images = ["image00001.jpg", "image00002.jpg", "image00003.jpg", "image00004.jpg", "image00005.jpg", "image00006.jpg", "image00007.jpg", "image00008.jpg", "image00009.jpg", "image00010.jpg", "image00011.jpg", "image00012.jpg", "image00013.jpg", "image00014.jpg", "image00015.jpg", "image00016.jpg", "image00017.jpg", "image00018.jpg", "image00019.jpg", "image00020.jpg", "image00021.jpg", "image00022.jpg", "image00023.jpg", "image00024.jpg", "image00025.jpg", "image00026.jpg", "image00027.jpg", "image00028.jpg", "image00029.jpg", "image00030.jpg", "image00031.jpg", "image00032.jpg", "image00033.jpg", "image00034.jpg", "image00035.jpg", "image00036.jpg", "image00037.jpg", "image00038.jpg", "image00039.jpg", "image00040.jpg", "image00041.jpg", "image00042.jpg", "image00043.jpg", "image00044.jpg", "image00045.jpg", "image00046.jpg", "image00047.jpg", "image00048.jpg"];
 
@@ -36,4 +36,3 @@ tagList(
   tags$script(src='main.js')
 )
 ```
-
