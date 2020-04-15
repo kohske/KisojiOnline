@@ -14,16 +14,16 @@
 
 テーマ一覧と関連するキーワードです。
 
+- [顔の倒立効果](theme/FaceInversion/)
+  - 記憶の処理水準; 倒立効果; 短期記憶; 顔認知; 再認課題
 - [ミュラーリヤー錯視](theme/Muller-lyer/)
   - 錯視; 閾値測定; 極限法
+- [短期記憶](theme/ShortTermMemory/)
+  - 短期記憶; チャンク; 再生課題; 正再生数
 - [視覚探索](theme/VisualSearch/)
   - ポップアウト; 注意; 結合探索; 特徴探索; 特徴統合理論; 反応時間
 - [系列位置効果](theme/SerialPositionEffect/)
   - 短期記憶; 再認; 正答率
-- [顔の倒立効果](theme/FaceInversion/)
-  - 記憶の処理水準; 倒立効果; 短期記憶; 顔認知
-- 未 [短期記憶](theme/ShortTermMemory/)
-  - 短期記憶;
 - 未 [鏡映描写]() 
   - 運動学習; 転移; 遂行時間
 - 未 [ストループ課題]()
@@ -33,7 +33,9 @@
 - 未 []()
   - 信号検出理論
   
-- おまけ：[さださがし](http://kohske.github.io/sandbox/sadasagashi/)
+おまけ
+
+- [さださがし](http://kohske.github.io/sandbox/sadasagashi/)
   - 視覚探索; 超困難課題; 苦行; さだ
   
 ----
