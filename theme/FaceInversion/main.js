@@ -249,4 +249,10 @@ var finish_experiment_procedure = {
 
 tl.push(finish_experiment_procedure);
 
-jsPsych.init({ timeline: tl });
+var preload_images = upfaces_images.map(v => "imgs/use/"+v);
+preload_images = preload_images.concat(invfaces_images.map(v => "imgs/use/"+v));
+
+jsPsych.init({
+  timeline: tl,
+  preload_images: preload_images,
+});
