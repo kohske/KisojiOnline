@@ -23,13 +23,18 @@
 # 実験の設定を指定する方法
 
 URLにおいてパラメーターを指定することで、ブロックの順番、本試行の試行数、本試行の制限時間（秒）を設定することができます。
-ブロックの順番=pattern, 本試行の試行数=nTrials, 本試行の制限時間=timeLimitとして、次のようにします。
-nTrialsとtimeLimitの両方が指定された場合は制限時間が設けられますが、もし制限時間内にすべての試行を回答したときには、その段階で終了となります。
+
+- ブロックの順番=pattern, 
+- 本試行の試行数=nTrials, 
+- 本試行の制限時間=timeLimit
+
+として、次のようにします。なお、nTrialsとtimeLimitの両方が指定された場合は制限時間が設けられますが、もし制限時間内にすべての試行を回答したときには、その段階で終了となります。
 
 ## 例1
 
 統制条件を行ったあとにストループ条件(pattern=1)
-本試行の試行数(nTrials)を30回
+
+本試行の試行数(nTrials)は30回
 
 > stroop.html?pattern=1&nTrials=30
 
@@ -38,17 +43,24 @@ nTrialsとtimeLimitの両方が指定された場合は制限時間が設けら�
 ## 例2
 
 ストループ条件を行ったあとに統制条件(pattern=2)
-制限時間(timeLimit)を60秒
+
+制限時間(timeLimit)は60秒
 
 > stroop.html?pattern=2&timeLimit=60
+
+[例2を実際にやってみる](stroop.html?pattern=2&timeLimit=60)
 
 ## 例3
 
 ストループ条件と統制条件をランダムに呈示(pattern=3)
+
 本試行の試行数(nTrials)を30回
+
 この条件では、ストループ条件と統制条件の数を等しくするため、制限時間を指定することはできません。また試行数は偶数にしてください。
 
 > stroop.html?pattern=1&nTrials=30
+
+[例3を実際にやってみる](stroop.html?pattern=1&nTrials=30)
 
 # 出⼒ファイルについて
 
@@ -59,7 +71,7 @@ nTrialsとtimeLimitの両方が指定された場合は制限時間が設けら�
 各列については次の通りです。
 
 - rt: 反応時間(ms)
-- B列（responses）からF列（internal_node_id）までは無視して大丈夫です。
+- B列（responses）からF列（internal_node_id）までは無視
 - gender: 1=男性, 2=女性, 3=その他・無回答
 - age: 年齢
 - date: 実験を行った日時
@@ -89,3 +101,4 @@ nTrialsとtimeLimitの両方が指定された場合は制限時間が設けら�
 - [新ストループ検査Ⅱ](http://www.toyophysical.co.jp/sinnsutoru-pu1.htm) 紙媒体での検査にお勧めです。ストループ検査だけでなく、逆ストループ検査も可能です。
 - [宋永寧・箱田裕司 (2011). パソコンを用いた新ストループ・逆ストループテストの作成および実施効果　認知心理学研究, 9(1), 19-26.](https://www.jstage.jst.go.jp/article/jcogpsy/9/1/9_1_19/_article/-char/ja/)
 - [渡辺めぐみ・箱田裕司・松本 亜紀 (2013). ストループ・逆ストループ課題の切り替えコストと注意制御 心理学研究, 84(1), 64-68.](https://www.jstage.jst.go.jp/article/jjpsy/84/1/84_64/_article/-char/ja/)
+- [jsPsych](https://www.jspsych.org/)
