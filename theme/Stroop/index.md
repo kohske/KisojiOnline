@@ -20,9 +20,9 @@
 
 ただし練習試行は10回で固定です。制限時間もありません。練習試行にのみフィードバックがあります。
 
-# 実験の設定を指定する方法
+# 実験の設定を変更する方法
 
-URLにおいてパラメーターを指定することで、ブロックの順番、本試行の試行数、本試行の制限時間（秒）を設定することができます。
+URLにおいてパラメーターを指定することで、ブロックの順番、本試行の試行数、本試行の制限時間（秒）を変更することができます。
 
 - ブロックの順番=pattern, 
 - 本試行の試行数=nTrials, 
@@ -30,7 +30,7 @@ URLにおいてパラメーターを指定することで、ブロックの順�
 
 とします。なお、nTrialsとtimeLimitの両方を指定した場合は制限時間が優先されます。nTrialsは無効になります。
 
-詳しくは以下の例をご覧ください。
+詳しくは以下の例をご覧ください。各例題の「実際にやってみる」を開きブラウザのアドレス欄を見るとパラメーターを確認・変更できます。
 
 ## 例1
 
@@ -70,7 +70,7 @@ URLにおいてパラメーターを指定することで、ブロックの順�
 
 実験プログラムは[jsPsych](https://www.jspsych.org/)を使って作成されています。その関係で、分析とは直接関係のないデータも出力されています。
 
-各列については次の通りです。
+各列については次の通りです。エクセルのフィルター機能を使うと集計がしやすいでしょう。
 
 - rt: 反応時間(ms)
 - B列（responses）からF列（internal_node_id）までは無視
@@ -103,4 +103,5 @@ URLにおいてパラメーターを指定することで、ブロックの順�
 - [新ストループ検査Ⅱ](http://www.toyophysical.co.jp/sinnsutoru-pu1.htm) 紙媒体での検査にお勧めです。ストループ検査だけでなく、逆ストループ検査も可能です。
 - [宋永寧・箱田裕司 (2011). パソコンを用いた新ストループ・逆ストループテストの作成および実施効果　認知心理学研究, 9(1), 19-26.](https://www.jstage.jst.go.jp/article/jcogpsy/9/1/9_1_19/_article/-char/ja/)
 - [渡辺めぐみ・箱田裕司・松本 亜紀 (2013). ストループ・逆ストループ課題の切り替えコストと注意制御 心理学研究, 84(1), 64-68.](https://www.jstage.jst.go.jp/article/jjpsy/84/1/84_64/_article/-char/ja/)
-- [jsPsych](https://www.jspsych.org/)
+- [jsPsych](https://www.jspsych.org/)　Josh de Leeuw　によって作成されたオンラインの心理学実験を行うためのJavaScriptライブラリ
+- [de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a web browser. Behavior Research Methods, 47(1), 1-12.](https://link.springer.com/article/10.3758/s13428-014-0458-y)
