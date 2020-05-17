@@ -143,6 +143,7 @@ var recall_show = {
   img1: jsPsych.timelineVariable('f'),
   img2: jsPsych.timelineVariable('s'),
   choices: ['leftarrow', 'rightarrow'],
+  prompt: "<br/>どちらの顔写真が、先程の実験中に呈示されたものか、左右の矢印キーを押して回答してください",
   post_trial_gap: 500,
   data: {
     record: 1,
