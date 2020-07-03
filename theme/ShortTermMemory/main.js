@@ -19,7 +19,7 @@ var start_experiment_procedure = {
   type: 'html-keyboard-response',
   stimulus: '<p>短期記憶</p>',
   choices: ['space'],
-  prompt: `<p>かならず指示に従って紙とペンが用意してください。</p><p>スペースキーを押すと始まります。</p>`,
+  prompt: `<p>かならず指示に従って紙とペンを用意してください。</p><p>スペースキーを押すと始まります。</p>`,
   // デバッグ用 (最初の画面で回答チェックシート用データを出す)
   /*
     on_start: function(trial) {
@@ -91,7 +91,7 @@ for (var c=0; c<n_conditions; ++c) answer_txt += "スコア\t\t";
 
 
 // timeline作成（結構複雑）
-// 条件（文字種・提示時間）ごとに、リストサイズ2〜10（練習では2〜3）を順番に提示。
+// 条件（文字種・提示時間）ごとに、リストサイズ3〜10（練習では2〜3）を順番に提示。
 // 条件はランダム、条件内のリストサイズは固定（1ずつ増える）
 // 条件実施前に教示
 // リスト終了後に回答画面提示
@@ -113,8 +113,9 @@ for (var i=0; i<words.length; ++i) {
     tl.push ({
       timeline: [{
 	type: 'html-keyboard-response',
+	choices: jsPsych.NO_KEYS,
 	stimulus: jsPsych.timelineVariable('word'),
-	trial_duration: 500, //ws[j].dur*1000.0/1000.0,
+	trial_duration: ws[j].dur*1000.0, // 500 
 	post_trial_gap: 100,	
 	data: {
 	  cond: ws[j].cond,
