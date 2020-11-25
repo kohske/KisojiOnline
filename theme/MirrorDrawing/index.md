@@ -14,7 +14,7 @@
 | 第2群 | 利き手 | 非利き手 | 利き手 |
 | 第3群 | 利き手 | 休憩（10分） | 利き手 |
 
-この実験では、マウスまたはタッチパッドを使用して星形をなぞっていただきます。（スマートフォンやタブレット端末には非対応）。ただし、マウスを上（下）に移動させると画面上の線が下（上）方向に描画されます。（左右の反転はありません）
+この実験では、マウスまたはタッチパッドを使用して星形をなぞっていただきます。（スマートフォンやタブレット端末には非対応）。マウスを上（下）に移動させると画面上の線が下（上）方向に描画されます。左右の反転はありません。
 
 星形をなぞるときは、必ず左上から開始します。左上をクリックすると赤い丸がつきます。星の角に到達すると赤丸がつきます。必ず通過しなくてはいけないチェックポイントのようなものです。
 
@@ -25,6 +25,8 @@
 ![スタート時の画像](start_img_for_manual.png "スタート時の画像")
 
 図1. 試行開始時の状態
+
+<div style="text-align: center;">図1. 試行開始時の状態</div>
  
 ![出力される画像のサンプル](result_for_manual.png "出力される画像のサンプル")
 
@@ -44,15 +46,15 @@
 
 ### 方法１：クリックした状態のままで星形をなぞる
 
-[第1群](MirrorDrawing.html?pattern=1&mouse_style=1)
-[第2群](MirrorDrawing.html?pattern=2&mouse_style=1)
-[第3群](MirrorDrawing.html?pattern=3&mouse_style=1&rest_time=1)
+- [第1群](MirrorDrawing.html?pattern=1&mouse_style=1)
+- [第2群](MirrorDrawing.html?pattern=2&mouse_style=1)
+- [第3群](MirrorDrawing.html?pattern=3&mouse_style=1&rest_time=10)
 
 ### 方法２：クリックして、指をあげてから星形をなぞる
 
-[第1群](MirrorDrawing.html?pattern=1&mouse_style=2)
-[第2群](MirrorDrawing.html?pattern=2&mouse_style=2)
-[第3群](MirrorDrawing.html?pattern=3&mouse_style=2&rest_time=1)
+- [第1群](MirrorDrawing.html?pattern=1&mouse_style=2)
+- [第2群](MirrorDrawing.html?pattern=2&mouse_style=2)
+- [第3群](MirrorDrawing.html?pattern=3&mouse_style=2&rest_time=10)
 
 ## 出⼒ファイルについて
 
@@ -72,11 +74,24 @@
 - I列（randomID）:　参加者ごとに割り当てられたランダムな文字列
 - J列（pattern）:　実験の３条件を表しています。
 - K列（success）:　trueのときは使用したブラウザがフルスクリーンモードをサポートしていることを意味します
-- L列（reaction_time）:　この反応時間が適切な反応時間です。最初の赤丸がついたときを開始時間として、最後の赤丸がつくまでの時間を秒単位で表示します。
+- L列（reaction_time）:　この反応時間が適切な反応時間です。最初の赤丸がついたときを開始時間として、最後の赤丸がつくまでの時間を秒単位で表示します。課題遂行に要した時間です。
 - M列（trial_num）:　試行の番号
 - N列以降は無視
 
 Excelのフィルター機能を使って、phase=3のデータを抽出してreaction_timeを参照すると分析に必要なデータを得ることができると思います。
+
+# 休憩時間の変更方法
+
+第3群の休憩時間はデフォルトでは10分ですが、これは簡単に変更することができます。
+
+実験画面のURLを見ると、
+
+```
+MirrorDrawing.html?pattern=3&mouse_style=2&rest_time=10
+```
+
+のようになっているかと思いますが、rest_timeの後の数字を分単位で指定してください。
+
 
 # 引用文献
 - de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a web browser. Behavior Research Methods, 47(1), 1-12. doi:10.3758/s13428-014-0458-y.
