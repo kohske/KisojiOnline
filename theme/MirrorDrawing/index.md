@@ -24,11 +24,11 @@
 
 ![スタート時の画像](start_img_for_manual.png "スタート時の画像")
 
-<div style="text-align: center; margin-bottom: 20px">図1. 試行開始時の状態</div>
+<div style="text-align: center; margin-bottom: 40px">図1. 試行開始時の状態</div>
  
 ![出力される画像のサンプル](result_for_manual.png "出力される画像のサンプル")
 
-<div style="text-align: center; margin-bottom: 20px">図2. 各試行後に保存される画像の例</div>
+<div style="text-align: center; margin-bottom: 40px">図2. 各試行後に保存される画像の例</div>
 
 ## 星形のなぞりかた
 
