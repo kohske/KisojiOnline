@@ -1,4 +1,4 @@
-# 恒常法の実験について
+# 聴覚刺激の弁別（恒常法）の実験について
 
 この実験では参加者に音声ファイルを聞かせて、それが「ば（ba）」と聞こえたか「ぱ（pa）」と聞こえたかを判断させます。
 
@@ -21,14 +21,19 @@
 |22|80|
 |23|85|
 
-実験刺激である音声ファイルは、[Dr. Jessamyn Schertz が公開している Synthesis -> klatt_synthesize_vot_f0_series.praat のスクリプト](http://individual.utoronto.ca/jschertz/scripts.shtml)を使って作成しました。
+負の（マイナスの）VOTは、破裂の開始より声帯振動が先に起こっていることを示しています。
 
-VOTが大きいほど「ば（ba）」と聞こえる割合が高くなると予測されます。
+実験刺激である音声ファイルは、Praat (Boersma & Weenink, 2019) を用いて作成しました。また、VOTの操作は、[Dr. Jessamyn Schertz が公開している Synthesis -> klatt_synthesize_vot_f0_series.praat のスクリプト](http://individual.utoronto.ca/jschertz/scripts.shtml)を使って行いました。
+
+音声の長さは319 msです。母音部の基本周波数 (F0) の始端部と終端部は100 Hzです。
 
 最初の24試行は練習試行で、すべての刺激を1回ずつ聞くことになります。
 
 その後本試行が始まります。以下のリンクの本試行ではそれぞれの刺激が5回ずつ呈示されます。全部で120試行です。24試行ごとに休憩のためのメッセージが呈示されます。
 
+## 予測
+
+Shimizu (1977) によれば、日本語母語話者の「ば（ba）」と「ぱ（pa）」の弁別の境界は、VOT = 18 ms です。VOTが正の方向に大きいほど「ぱ（pa）」と聞こえる割合が高くなると予測されます。
 
 ## 実験を始める
 
@@ -62,5 +67,14 @@ constant_method.html?counterBalance=1&repeat_num=5
 - resp　「ば (ba)」を選んだら1, 「ぱ (pa)」を選んだら0（カウンターバランスは考慮済み）
 
 # 引用文献
+- Boersma, P., & Weenink, D. (2019). Praat: Doing phonetics by computer (Version 6.1.03) [Computer software]. http://www.praat.org/
 - de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a web browser. Behavior Research Methods, 47(1), 1-12. doi:10.3758/s13428-014-0458-y.
 - Lisker, L., & Abramson, A. S. (1964). A cross-language study of voicing in initial stops: Acoustical measurements. Word, 20, 384–422.
+- Shimizu, K. (1977). Voicing features in the perception and production of stop consonants by Japanese speakers. Studia Phonologica, 11, 25–34.
+
+引用はしていませんが、次の文献もご参照ください。
+
+- 日本音聲學會 (1976). 音聲學大辞典　日本音聲學會 (編)　三修社
+- 大山 正 (1992). 感覚と知覚　梅本 堯夫・大山 正 (編)　心理学への招待 (pp. 29-56)　サイエンス社
+- 高田 三枝子 (2008). 日本語語頭有声閉鎖音のVOTに関する全国的分布パタン　日本語の研究, 4, 48-62.
+- Werker, J. F., & Tees, R. C. (1984). Cross-language speech perception: Evidence for perceptual reorganization during the first year of life. Infant Behavior and Development, 7, 49–63.
