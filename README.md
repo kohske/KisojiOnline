@@ -28,7 +28,7 @@
   - 運動学習; 転移; 遂行時間
 - [ストループ課題](theme/Stroop/)
   - 認知的葛藤; 反応時間;
-- [聴覚刺激の弁別（恒常法）](theme/ConstantMethod)
+- [聴覚刺激の弁別](theme/ConstantMethod)
   - 恒常法; 心理物理関数
 - 未 []()
   - 信号検出理論
