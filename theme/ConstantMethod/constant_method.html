@@ -187,7 +187,11 @@
     // 事前に読み込んでおいたほうがよさそうですが、サーバーにアップロードしていない状態では
     // 動かなくなります。https://www.jspsych.org/overview/media-preloading/
     on_finish: function() {
-      jsPsych.data.get().localSave('csv','csv', myrandID + '.csv');
+        // 文字化けをするデータを削除して保存
+        let output_data = jsPsych.data.get().ignore('stimulus');
+        // output_data = output_data.ignore('string');
+        // output_data = output_data.ignore('color');
+        output_data.localSave('csv', myrandID + '.csv');
     },
   });
 

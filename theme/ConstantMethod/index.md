@@ -60,11 +60,13 @@ constant_method.html?counterBalance=1&repeat_num=5
 各列については次の通りです。
 
 - rt（A列）　反応時間（ms）
-- stimulus（B列）からquestion_order（J列）までは無視
-- stimuli_info（K列）　呈示された音声刺激の番号
-- counterBalance_info（L列）1のとき 左側の選択肢が「ば (ba)」　右側の選択肢が「ぱ (pa)」2のとき 左側の選択肢が「ぱ (pa)」　右側の選択肢が「ば (ba)」	
-- phase_info　0=練習試行, 1=本試行
-- resp　「ば (ba)」を選んだら1, 「ぱ (pa)」を選んだら0（カウンターバランスは考慮済み）
+- button_pressed（B列）からquestion_order（I列）までは無視
+- stimuli_info（J列）　呈示された音声刺激の番号
+- counterBalance_info（K列）1のとき 左側の選択肢が「ば (ba)」　右側の選択肢が「ぱ (pa)」2のとき 左側の選択肢が「ぱ (pa)」　右側の選択肢が「ば (ba)」	
+- phase_info（L列）　0=練習試行, 1=本試行
+- resp（M列）　「ば (ba)」を選んだら1, 「ぱ (pa)」を選んだら0（カウンターバランスは考慮済み）
+
+**エクセルのフィルター機能を使って、phase_info = 1のデータだけを抽出すると分析がしやすいです。**
 
 # 引用文献
 - Boersma, P., & Weenink, D. (2019). Praat: Doing phonetics by computer (Version 6.1.03) [Computer software]. http://www.praat.org/
