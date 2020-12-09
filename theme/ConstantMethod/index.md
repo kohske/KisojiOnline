@@ -70,21 +70,10 @@ constant_method.html?counterBalance=1&repeat_num=5
 
 ## 閾値に関する注意点
 
-横軸にVOT、縦軸に「ば（ba）」と答えた割合をプロットしたとき、心理物理関数がゆるやかに変化することが理想的ですが、実際には急激に変化することが考えられます。
-
-5回の繰り返し回数では少ないかもしれませんが、オンライン実験では試行数を多くしすぎると別の問題（集中力の低下、マジメに参加しないなど）が生じる恐れがあります。
-
-あるいは個人ごとに心理物理関数を求めるのではなく、複数の参加者のデータを使って心理物理関数を求める方法も考えられます。このあたりは工夫が必要かと思われます。
+横軸にVOT、縦軸に「ば（ba）」と答えた割合をプロットして心理物理関数を得ます。5回の繰り返し回数では少ないかもしれませんが、オンライン実験では試行数を多くしすぎると別の問題（集中力の低下、マジメに参加しないなど）が生じる恐れがあります。ここでは閾値を求めるためのスクリプトは公開しておりません。ご了承ください。
 
 # 引用文献
 - Boersma, P., & Weenink, D. (2019). Praat: Doing phonetics by computer (Version 6.1.03) [Computer software]. http://www.praat.org/
 - de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a web browser. Behavior Research Methods, 47(1), 1-12. doi:10.3758/s13428-014-0458-y.
 - Lisker, L., & Abramson, A. S. (1964). A cross-language study of voicing in initial stops: Acoustical measurements. Word, 20, 384–422.
 - Shimizu, K. (1977). Voicing features in the perception and production of stop consonants by Japanese speakers. Studia Phonologica, 11, 25–34.
-
-引用はしていませんが、次の文献もご参照ください。
-
-- 日本音聲學會 (1976). 音聲學大辞典　日本音聲學會 (編)　三修社
-- 大山 正 (1992). 感覚と知覚　梅本 堯夫・大山 正 (編)　心理学への招待 (pp. 29-56)　サイエンス社
-- 高田 三枝子 (2008). 日本語語頭有声閉鎖音のVOTに関する全国的分布パタン　日本語の研究, 4, 48-62.
-- Werker, J. F., & Tees, R. C. (1984). Cross-language speech perception: Evidence for perceptual reorganization during the first year of life. Infant Behavior and Development, 7, 49–63.
