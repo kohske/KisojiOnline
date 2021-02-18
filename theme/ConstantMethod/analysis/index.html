@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <script src="glm.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="plotly-latest.min.js"></script>    
+  </head>
+  <body>
+    <h1>閾値の計算</h1>
+    <p>ロジスティック回帰です。</p>
+    <p>
+      刺激のVOT（刺激番号からミリ秒に変換したもの）を貼り付けてください（1行1データ）。<br/>
+      <textarea id="tx"></textarea>
+    </p>
+    <p>
+      反応（M列）を貼り付けてください（1行1データ)。<br/>
+      <textarea id="ty"></textarea>
+    </p>
+    
+    <div id="tester" style="width:600px;height:400px;"></div>
+    <p id="div_th"></p>
+  </body>
+  <script>
+    function calc() {
+      var x = $("#tx").val().split("\n").map(function(x) {return Number(x);});
+      var y = $("#ty").val().split("\n").map(function(x) {return Number(x);});
+      if (x.length != y.length) {return;}
+      
+      var TESTER = document.getElementById('tester');
+      
+      //var x=[-4,-4,-4,-4,-4,-2,-2,-2,-2,-2,0,0,0,0,0,2,2,2,2,2,4,4,4,4,4,6,6,6,6,6,8,8,8,8,8,10,10,10,10,10,12,12,12,12,12,14,14,14,14,14,16,16,16,16,16,18,18,18,18,18,20,20,20,20,20,22,22,22,22,22,24,24,24,24,24,26,26,26,26,26,28,28,28,28,28,30,30,30,30,30,32,32,32,32,32,34,34,34,34,34,36,36,36,36,36,38,38,38,38,38,40,40,40,40,40,42,42,42,42,42];
+      //var y=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+      var y2 = y.map(function(y){return 1-y;});
+      
+      var glm_model = GLM(GLM.families.Binomial());
+      glm_model.fit(y2, x);
+      var w = glm_model.weights;
+      var th=-w[1]/w[0];
+
+      var xmin = Math.min(...x);
+      var xmax = Math.max(...x);
+      var vN = 100;
+      var vx = Array.from({length: vN+1}, (v, k) => xmin+(xmax-xmin)/vN*k);
+      var vy = vx.map(function(p){return  1-(1 / (1 + Math.exp(-(w[0] * p + w[1]))))});
+
+      var trace1 = {
+	x: x,
+	y: y,
+	mode: 'markers',
+	type: 'scatter'
+      };
+      var trace2 = {
+	x: vx,
+	y: vy,
+	mode: 'lines',
+	type: 'scatter'
+      };
+
+      var layout = {
+	shapes: [
+	  {
+            type: 'line',
+            x0: xmin,
+            y0: 0.5,
+            x1: xmax,
+            y1: 0.5,
+            line:{
+              color: 'rgb(255, 0, 0)',
+              width: 1,
+              dash:'dot'
+            }
+	  },
+	  {
+            type: 'line',
+            x0: th,
+            y0: 0,
+            x1: th,
+            y1: 1,
+            line:{
+              color: 'rgb(255, 0, 0)',
+              width: 1,
+              dash:'dot'
+            }
+	  }
+	  
+	]
+      };
+      
+      Plotly.newPlot( TESTER, [trace1, trace2], layout);
+
+
+      var outp = document.getElementById('div_th');
+      outp.innerText = "弁別閾値 (VOT): "+th+" ms";
+    }
+
+    $(function() {
+      $('#tx').on('change', function(){calc();});
+      $('#ty').on('change', function(){calc();});
+    });    
+  </script>
+</html>
