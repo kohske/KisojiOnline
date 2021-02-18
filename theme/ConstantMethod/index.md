@@ -62,7 +62,7 @@ constant_method.html?counterBalance=1&repeat_num=5
 - rt（A列）　反応時間（ms）
 - button_pressed（B列）からquestion_order（I列）までは無視
 - stimuli_info（J列）　呈示された音声刺激の番号
-- counterBalance_info（K列）1のとき 左側の選択肢が「ば (ba)」　右側の選択肢が「ぱ (pa)」2のとき 左側の選択肢が「ぱ (pa)」　右側の選択肢が「ば (ba)」	
+- counterBalance_info（K列）1のとき 左側の選択肢が「ば (ba)」　右側の選択肢が「ぱ (pa)」2のとき 左側の選択肢が「ぱ (pa)」　右側の選択肢が「ば (ba)」
 - phase_info（L列）　0=練習試行, 1=本試行
 - resp（M列）　「ば (ba)」を選んだら1, 「ぱ (pa)」を選んだら0（カウンターバランスは考慮済み）
 
@@ -71,6 +71,24 @@ constant_method.html?counterBalance=1&repeat_num=5
 ## 閾値に関する注意点
 
 エクセルやRを使って、横軸をVOT、縦軸を「ば（ba）」と答えた割合とした心理物理関数を作成してください。5回の繰り返し回数では少ないかもしれませんが、オンライン実験では試行数を多くしすぎると別の問題（集中力の低下、マジメに参加しないなど）が生じる恐れがあります。なお、ここでは閾値を求めるためのスクリプトは公開しておりません。ご了承ください。
+
+## VOT間隔が小さいバージョン
+
+上記の刺激では、VOTが5 msきざみになっています。知覚的感受性が高い場合、5 msきざみは大きすぎるかもしれません。以下のURLでは、VOTが2 msきざみの刺激設定になります。
+
+- [左側の選択肢が「ば (ba)」で右側の選択肢が「ぱ (pa)」（VOT間隔 2ms）](constant_method.html?counterBalance=1&repeat_num=5&VOTdif=2)
+- [左側の選択肢が「ぱ (pa)」で右側の選択肢が「ば (ba)」（VOT間隔 2ms）](constant_method.html?counterBalance=2&repeat_num=5&VOTdif=2)
+
+|ファイル番号|VOT (ms)|
+|---|---|
+|0|-4|
+|1|-2|
+|2|0|
+|（中略）|（中略）|
+|20|36|
+|21|38|
+|22|40|
+|23|42|
 
 # 引用文献
 - Boersma, P., & Weenink, D. (2019). Praat: Doing phonetics by computer (Version 6.1.03) [Computer software]. http://www.praat.org/

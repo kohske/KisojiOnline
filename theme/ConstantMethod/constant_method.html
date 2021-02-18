@@ -42,6 +42,16 @@
     scale = ["<p></p><font size=6>ぱ</font>", "<p></p><font size=6>ば</font>"];
   }
 
+  let VOTdif = jsPsych.data.getURLVariable('VOTdif');
+
+  // いまのところ、VOTdifが指定してあれば短い刺激で。
+  if (typeof VOTdif === "undefined") {
+    VOTdif = 5;
+  } else {
+    VOTdif = 2;
+  }
+
+
   // 本試行の繰り返し回数
   let repeat_num = jsPsych.data.getURLVariable('repeat_num');
   if (typeof repeat_num === "undefined") {
@@ -62,9 +72,15 @@
   const nStimuli = 24; // 刺激の数
 
   const sounds = [];
-  for (let i = 0; i < nStimuli; i++){
-    sounds.push(`stimuli/${i}.wav`) // この書き方はテンプレートリテラルと呼ばれています。https://qiita.com/kura07/items/c9fa858870ad56dfec12
-  } 
+  if (VOTdif == 2) {
+    for (let i = 0; i < nStimuli; i++){
+      sounds.push(`stimuli_dif02/${i}.wav`) // この書き方はテンプレートリテラルと呼ばれています。https://qiita.com/kura07/items/c9fa858870ad56dfec12
+    }
+  } else {
+    for (let i = 0; i < nStimuli; i++){
+      sounds.push(`stimuli/${i}.wav`) // この書き方はテンプレートリテラルと呼ばれています。https://qiita.com/kura07/items/c9fa858870ad56dfec12
+    }
+  }
 
   // 練習試行と本試行の分岐、ブロック数(繰り返し)の設定
   for (var phase = 0; phase < 2; phase++){ // phase=0は練習試行、phase=1は本試行
