@@ -1,0 +1,45 @@
+---
+title: "ミュラーリヤー実験"
+author: '@kohske'
+date: "2020/4/5"
+output:
+  html_document: 
+    mathjax: null
+    highlight: null
+    theme: null
+    css: ../lib/jspsych-6.3.0/css/jspsych.css
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+```{r}
+library(htmltools)
+tagList(
+  tags$script(src='../lib/jspsych-psychophysics-2.3.2/js/jspsych.js'),
+  #tags$script(src='../lib/jspsych-6.3.0/jspsych.js'),
+  tags$script(src='../lib/jspsych-6.3.0/plugins/jspsych-html-keyboard-response.js'),
+  tags$script(src='../lib/jspsych-psychophysics-2.3.2/jspsych-psychophysics.js'),
+  
+)
+```
+
+<script>
+var fac = {
+  angles: [60, 300], // 角度
+  comp_len: [90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220], // 系列
+};
+</script>
+
+```{r}
+library(htmltools)
+tagList(
+  tags$script(src="main_constant.js")
+)
+```
+
+<textarea id="result" value="1" cols="30" rows="30" maxlength="15" style="display:none"></textarea>
+
+
