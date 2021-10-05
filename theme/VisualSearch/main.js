@@ -10,7 +10,7 @@ var stim_ny = 6; // 行数
 var stim_area_w = canvas_width / stim_nx; // 各グリッドの幅
 var stim_area_h = canvas_height / stim_ny; // 各グリッドの高さ
 
-var line_width = 2; // 現在無効（調べる）
+var line_width = 4; // 現在無効（調べる）
 var line_length = 24; // 線の長さ
 
 // 休憩を挟む間隔
