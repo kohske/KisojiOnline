@@ -1,0 +1,26 @@
+---
+title: "サンプルデータ作成"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(plyr)
+N = 20
+ss = 5
+
+ret = data.frame(
+  std_angle = (1:5)*60,
+  m_pse = c(135, 140, 150, 165, 180),
+  sd_pse = c(10, 10, 10, 10, 10)
+)
+
+for (s in 1:ss) {
+  r = ddply(ret, .(std_angle), function(x) data.frame(sid = 1:N, PSE=rnorm(N, x$m_pse, x$sd_pse)))
+  arrange(r, "sid", "std_angle")
+  print(r)
+}
+```
