@@ -1,3 +1,10 @@
+/**
+ * キソジオンライン 最小可聴閾
+ * 
+ * by kohske takahashi
+ *
+ * MIT License | https://github.com/kohske/KisojiOnline/blob/master/LICENSE
+ */
 
 
 /* 
@@ -41,8 +48,9 @@ let n_trials = CS_freqs.length * CS_UD.length * n_reps;
 /*
   変数
 */
-// 最初のブロック? （教示用）
+// 現在の試行番号
 let cur_trial = 0;
+// 最初のブロック? （教示用）
 let first_block = true;
 
 

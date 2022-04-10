@@ -1,3 +1,10 @@
+/**
+ * キソジオンライン 等ラウドネスレベル
+ * 
+ * by kohske takahashi
+ *
+ * MIT License | https://github.com/kohske/KisojiOnline/blob/master/LICENSE
+ */
 
 
 /* 
