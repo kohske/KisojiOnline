@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <script src="glm.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>    
+      MathJax = {
+	chtml: {displayAlign: 'left'}
+      };
+    </script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    <h1>閾値の計算</h1>
+    <p>ロジスティック回帰です。</p>
+    <p>
+      刺激強度（CS_level）の列を貼り付けてください（1行1データ）。<br/>
+      <textarea id="tx"></textarea>
+    </p>
+    <p>
+      反応（resp列）を貼り付けてください（1行1データ)。<br/>
+      <textarea id="ty"></textarea>
+    </p>
+
+    <button onclick="calc();">計算する</button>
+
+    <h3>PSEとデータの個数</h3>
+    <p id="div_pse"></p>
+    
+    <h3>ロジスティック回帰曲線の数式・グラフ・データ</h3>
+    <p id="div_th"></p>
+    <div id="tester" style="width:600px;height:400px;"></div>
+
+  </body>
+  <script>
+    var x;
+    var y;
+    var ps;
+
+    var sum  = function(arr) {
+      return arr.reduce(function(prev, current, i, arr) {
+        return prev+current;
+      });
+    };
+    var average = function(arr, fn) {
+      return sum(arr, fn)/arr.length;
+    };
+    
+    function calc() {
+      
+      var TESTER = document.getElementById('tester');
+      TESTER.innerHTML="";
+      var outpse = document.getElementById('div_pse');
+      outpse.innerHTML="";
+      var outp = document.getElementById('div_th');
+      outp.innerHTML="";
+     
+      x = $("#tx").val().split("\n").map(function(x) {return Number(x);});
+      y = $("#ty").val().split("\n").map(function(x) {return Number(x);});
+
+      //x=[-4,-4,-4,-4,-4,-2,-2,-2,-2,-2,0,0,0,0,0,2,2,2,2,2,4,4,4,4,4,6,6,6,6,6,8,8,8,8,8,10,10,10,10,10,12,12,12,12,12,14,14,14,14,14,16,16,16,16,16,18,18,18,18,18,20,20,20,20,20,22,22,22,22,22,24,24,24,24,24,26,26,26,26,26,28,28,28,28,28,30,30,30,30,30,32,32,32,32,32,34,34,34,34,34,36,36,36,36,36,38,38,38,38,38,40,40,40,40,40,42,42,42,42,42];
+      //y=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+      if (!x) return;
+      if (!y) return;
+      
+      
+      if (! (x.length > 1)) {return;}
+      if (x.length != y.length) {outpse.innerHTML="刺激と反応のデータの個数が異なります";; return;}
+      
+
+      var y2 = y.map(function(y){return 1-y;});
+      
+      var glm_model = GLM(GLM.families.Binomial());
+      glm_model.fit(y, x);
+      var w = glm_model.weights;
+      var th=-w[1]/w[0];
+
+      var xmin = Math.min(...x);
+      var xmax = Math.max(...x);
+      var vN = 100;
+      var vx = Array.from({length: vN+1}, (v, k) => xmin+(xmax-xmin)/vN*k);
+      var vy = vx.map(function(p){return  (1 / (1 + Math.exp(-(w[0] * p + w[1]))))});
+
+      ps = {};
+      for (var i=0; i<x.length; ++i) {
+	if (!ps[x[i]]) ps[x[i]] = [];
+	ps[x[i]].push(y[i]);
+      }
+
+      var px = [], py = [];
+      for (var xx in ps) {
+	px.push(xx);
+	py.push(average(ps[xx]));
+      }
+
+      var trace1 = {
+	x: px,
+	y: py,
+	mode: 'markers',
+	type: 'scatter',
+	name: "平均反応確率",
+      };
+      var trace2 = {
+	x: vx,
+	y: vy,
+	mode: 'lines',
+	type: 'scatter',
+	name: "心理物理関数",
+      };
+
+      var layout = {
+	shapes: [
+	  {
+            type: 'line',
+            x0: xmin,
+            y0: 0.5,
+            x1: xmax,
+            y1: 0.5,
+            line:{
+              color: 'rgb(255, 0, 0)',
+              width: 1,
+              dash:'dot'
+            }
+	  },
+	  {
+            type: 'line',
+            x0: th,
+            y0: 0,
+            x1: th,
+            y1: 1,
+            line:{
+              color: 'rgb(255, 0, 0)',
+              width: 1,
+              dash:'dot'
+            }
+	  }
+	  
+	]
+      };
+      
+      Plotly.newPlot( TESTER, [trace1, trace2], layout);
+
+
+      var eq = "\\[ y=\\frac{1}{1+e^{-(x-\\mu)/s}}, \\text{where} ~ ";
+      eq += "\\mu = "+ (-w[1]/w[0]).toFixed(3) + ", ~ ";
+      eq += "s = "+ (1/w[0]).toFixed(3) + "\\]";
+      outp.innerHTML = eq      
+      //eq += w[0]+", "+w[1];
+      //+"<br/>PSE: "+th+" dB"+"<br/>データの個数: "+x.length;
+      
+      MathJax.typeset([outp]);
+
+      outpse.innerHTML = "PSE: <input type='text' width='80' value = '"+ th.toFixed(3) +"'></input><br/>";
+      outpse.innerHTML += "データの個数: <input type='text' width='80' value = '"+ x.length+"'></input>";      
+
+    }
+    
+    $(function() {
+      $('#tx').on('change', function(){calc();});
+      $('#ty').on('change', function(){calc();});
+    });
+      
+  </script>
+</html>

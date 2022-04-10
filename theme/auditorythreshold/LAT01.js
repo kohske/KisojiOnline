@@ -43,7 +43,13 @@ var preload = {
 
 var welcome = {
   type: jsPsychHtmlKeyboardResponse,
-  stimulus: "等ラウドネスレベル計測の実験です。スペースキーを押してください。",
+  stimulus: function() {
+    if (jsPsych.data.getURLVariable("prac") == "1") {
+      return "等ラウドネスレベル測定の実験（練習）です。スペースキーを押してください。";
+    } else {
+      return "等ラウドネスレベル測定の実験（本番）です。スペースキーを押してください。";
+    }
+  },
   choices: [' '],  
 };
 
@@ -81,7 +87,7 @@ var instruction = {
 どちらの音が大きく聞こえたか判断してください。<br/>
 <br/>
 <b>1番目の大きいと感じたら → 'f'（エフ）キー</b><br/>
-<b>2番目が大きかと感じたら → 'j'（ジェイ）キー</b><br/>
+<b>2番目が大きいと感じたら → 'j'（ジェイ）キー</b><br/>
 <br/>
 を押してください（日本語入力はOFFにしてください）。<br/>
 <br/>
@@ -132,6 +138,7 @@ var tl_response = {
   on_finish: function(data) {
     ++cur_trial;
     jsPsych.setProgressBar(cur_trial/n_trials);
+    data.trial = cur_trial;    
     if(jsPsych.pluginAPI.compareKeys(data.response, 'j')){
       data.resp = 1;
     } else {
@@ -168,7 +175,6 @@ var inst_freq = {
 
 var loop_freq = {
   timeline: [inst_freq, loop_trial],
-  //  timeline_variables: [250, 500, 4000].map(function(x){return {freq: x};}),
   timeline_variables: CS_freqs.map(function(x){return {freq: x};}),  
   randomize_order: true
 }
@@ -181,7 +187,9 @@ var tl_finish_experiment = {
   on_start: function(trial) {
     var dt = jsPsych.data.get().filter([{record: 1}]);
     dt = dt.ignore(['stimulus', 'record', 'trial_type', 'trial_index', 'time_elapsed', 'internal_node_id', 'response']);
-    dt.localSave('csv','mydata.csv');
+    if (jsPsych.data.getURLVariable("prac") != "1") {    
+      dt.localSave('csv','LAT_eqa.csv');
+    }
     var txt = dt.csv().replace(/,/g, "\t").replace(/"/g,"");
     trial.stimulus = '<p>実験終了です。</p><p>データファイル（mydata.csv）が自動的にダウンロードされます。ダウンロードされたら、エクセルなどで開いて正しくデータが取得できているか確認してください。</p><p>ダウンロードが上手く行かない場合は、下の枠の中のデータをエクセルなどに貼り付けて保存しましょう。</p>'+
       '<p>枠の中をクリックしてから、Ctrl+A (コントロールキーを押しながらAキーを押す)ですべて選択し、Ctrl+Cでクリップボードにコピーできます。</p>'+
