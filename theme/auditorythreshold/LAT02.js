@@ -21,7 +21,7 @@ let CS_UD = ["DOWN"];
 //let CS_UD_start = {UP: -55, DOWN: -30};
 let CS_UD_start = {DOWN: -30};
 let level_interval = 3;
-let level_min = -60;
+let level_min = -81;
 let level_max = 0;
 let CS_levesl, n_reps, CS_freqs, n_max_rev;
 // 練習用
@@ -74,8 +74,8 @@ var tl_adjust_volume = {
   stimulus: sound_adjust,
   choices: [' '],
   prompt: `
-<p>現在再生されている音が、快適な大きさに聞こえるようにパソコンの音量を調整してください。</p>
-<p>ちょうどよい音量に調整したら、スペースキーを押してください。`,
+<p>現在再生されている音が、快適な大きさよりも少し小さめの音に聞こえるようにパソコンの音量を調整してください。</p>
+<p>音量に調整したら、スペースキーを押してください。`,
   response_ends_trial: true,
   trial_ends_after_audio: true  
 };
