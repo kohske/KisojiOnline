@@ -1,0 +1,147 @@
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --radius: 14px;
+  --max-width: 720px;
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* layout */
+main {
+  width: min(100% - 2rem, var(--max-width));
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+/* typography */
+h1, h2, h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.8em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+small {
+  color: var(--muted);
+}
+
+/* links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* media */
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+/* form */
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+/* spacing */
+section + section {
+  margin-top: 2rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0;
+}
+
+/* optional card feel without class */
+section {
+  padding: 1.2rem 0;
+}
+
+section:not(:first-of-type) {
+  border-top: 1px solid var(--line);
+}
+
+div.instruction {
+  max-width: 600px;
+  min-width: 450px;
+  width: 95%;
+  font-size: 80%;
+  line-height: 175%;
+  text-align: left;
+  margin: 1em auto;
+}
